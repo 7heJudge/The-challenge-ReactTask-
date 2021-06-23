@@ -5,7 +5,7 @@ export function itemsFetchDataSuccess(items) {
     };
 }
 
-export function newList(newItems) {
+export function changedList(newItems) {
     return {
         type: 'NEW_LIST',
         newItems

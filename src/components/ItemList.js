@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import {disabledButton, itemsFetchData, newList} from '../actions/items';
-import {disabledReducer} from "../reducers/disabled";
+import {changedList, itemsFetchData} from '../actions/items';
 
 class ItemList extends Component {
     constructor(props) {
@@ -19,7 +18,7 @@ class ItemList extends Component {
     onChangeList() {
         this.recur(0, this.state.arrSet);
         console.log(this.state.arrSet);
-        this.props.newList(this.state.arrSet);
+        this.props.changedList(this.state.arrSet);
     }
 
     recur(id, mas) {
@@ -96,16 +95,14 @@ ItemList.propTypes = {
 const mapStateToProps = (state) => {
     return {
         items: state.items,
-        newItems: state.newItems,
-        dis: state.disabledReducer,
+        newItems: state.newItems
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchData: (url) => dispatch(itemsFetchData(url)),
-        newList: (newItems) => dispatch(newList(newItems)),
-        disabledd: (ans) => dispatch(disabledButton(ans))
+        changedList: (newItems) => dispatch(changedList(newItems))
     };
 };
 
